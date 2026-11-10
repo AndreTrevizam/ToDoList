@@ -1,7 +1,7 @@
 using System.Security.Claims;
 using Microsoft.IdentityModel.JsonWebTokens;
 
-namespace ToDoList.Extensions;
+namespace ToDoList.Api.Extensions;
 
 public static class ClaimsPrincipalExtensions
 {

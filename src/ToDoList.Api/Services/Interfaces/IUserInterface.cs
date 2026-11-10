@@ -1,5 +1,5 @@
-using ToDoList.DTOs;
-using ToDoList.Models;
+using ToDoList.Shared.DTOs;
+using ToDoList.Api.Models;
 
 public interface IUserService
 {

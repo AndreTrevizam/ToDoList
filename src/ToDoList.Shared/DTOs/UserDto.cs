@@ -1,6 +1,4 @@
-using ToDoList.Models;
-
-namespace ToDoList.DTOs;
+namespace ToDoList.Shared.DTOs;
 
 public class UserDto
 {
@@ -13,13 +11,4 @@ public class UserDto
   public string Role { get; set; } = string.Empty;
 
   public DateTime CreatedAt { get; set; }
-
-  public static UserDto FromEntity(User user) => new()
-  {
-    Id = user.Id,
-    Name = user.Name,
-    Email = user.Email,
-    Role = user.Role.ToString(),
-    CreatedAt = user.CreatedAt
-  };
 }

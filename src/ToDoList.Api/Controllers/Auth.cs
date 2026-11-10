@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.DTOs;
+using ToDoList.Api.Mappings;
+using ToDoList.Shared.DTOs;
 
-namespace ToDoList.Controllers;
+namespace ToDoList.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
@@ -29,7 +30,7 @@ public class AuthController : ControllerBase
     return Ok(new AuthResponseDto
     {
       Token = _tokenService.Generate(user),
-      User = UserDto.FromEntity(user)
+      User = user.ToDto()
     });
   }
 
@@ -44,7 +45,7 @@ public class AuthController : ControllerBase
     return Ok(new AuthResponseDto
     {
       Token = _tokenService.Generate(user),
-      User = UserDto.FromEntity(user)
+      User = user.ToDto()
     });
   }
 }

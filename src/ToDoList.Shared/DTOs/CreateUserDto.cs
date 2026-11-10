@@ -1,4 +1,4 @@
-namespace ToDoList.DTOs;
+namespace ToDoList.Shared.DTOs;
 
 public class CreateUserDto
 {

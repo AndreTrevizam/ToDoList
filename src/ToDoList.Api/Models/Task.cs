@@ -1,4 +1,4 @@
-namespace ToDoList.Models;
+namespace ToDoList.Api.Models;
 
 public class TodoTask
 {

@@ -2,7 +2,7 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
-using ToDoList.Models;
+using ToDoList.Api.Models;
 
 public class TokenService : ITokenService
 {

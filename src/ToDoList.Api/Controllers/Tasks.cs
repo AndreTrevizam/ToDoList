@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.DTOs;
-using ToDoList.Extensions;
-using ToDoList.Models;
+using ToDoList.Api.Mappings;
+using ToDoList.Shared.DTOs;
+using ToDoList.Api.Extensions;
+using ToDoList.Api.Models;
 
-namespace ToDoList.Controllers;
+namespace ToDoList.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
@@ -23,7 +24,7 @@ public class TasksController : ControllerBase
   {
     var tasks = await _taskService.ListByUser(User.GetUserId());
 
-    return tasks.Select(TaskDto.FromEntity).ToList();
+    return tasks.Select(t => t.ToDto()).ToList();
   }
 
   [HttpGet("all")]
@@ -32,7 +33,7 @@ public class TasksController : ControllerBase
   {
     var tasks = await _taskService.ListAll();
 
-    return tasks.Select(TaskDto.FromEntity).ToList();
+    return tasks.Select(t => t.ToDto()).ToList();
   }
 
   [HttpPost]
@@ -40,6 +41,6 @@ public class TasksController : ControllerBase
   {
     var createdTask = await _taskService.Create(dto, User.GetUserId());
 
-    return Ok(TaskDto.FromEntity(createdTask));
+    return Ok(createdTask.ToDto());
   }
 }

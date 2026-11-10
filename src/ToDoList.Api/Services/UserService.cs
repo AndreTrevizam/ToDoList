@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ToDoList.Data;
-using ToDoList.DTOs;
-using ToDoList.Models;
+using ToDoList.Api.Data;
+using ToDoList.Shared.DTOs;
+using ToDoList.Api.Models;
 
 public class UserService : IUserService
 {

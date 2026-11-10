@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.DTOs;
-using ToDoList.Models;
+using ToDoList.Api.Mappings;
+using ToDoList.Shared.DTOs;
+using ToDoList.Api.Models;
 
-namespace ToDoList.Controllers;
+namespace ToDoList.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
@@ -22,6 +23,6 @@ public class UsersController : ControllerBase
   {
     var users = await _userService.ListAll();
 
-    return users.Select(UserDto.FromEntity).ToList();
+    return users.Select(u => u.ToDto()).ToList();
   }
 }

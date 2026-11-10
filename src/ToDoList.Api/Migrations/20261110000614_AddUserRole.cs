@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ToDoList.Migrations
+namespace ToDoList.Api.Migrations
 {
     /// <inheritdoc />
     public partial class AddUserRole : Migration

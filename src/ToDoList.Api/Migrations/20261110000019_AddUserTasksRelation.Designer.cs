@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ToDoList.Data;
+using ToDoList.Api.Data;
 
 #nullable disable
 
-namespace ToDoList.Migrations
+namespace ToDoList.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20261110000019_AddUserTasksRelation")]
@@ -20,7 +20,7 @@ namespace ToDoList.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.14");
 
-            modelBuilder.Entity("ToDoList.Models.TodoTask", b =>
+            modelBuilder.Entity("ToDoList.Api.Models.TodoTask", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -49,7 +49,7 @@ namespace ToDoList.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("ToDoList.Models.User", b =>
+            modelBuilder.Entity("ToDoList.Api.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -81,9 +81,9 @@ namespace ToDoList.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("ToDoList.Models.TodoTask", b =>
+            modelBuilder.Entity("ToDoList.Api.Models.TodoTask", b =>
                 {
-                    b.HasOne("ToDoList.Models.User", "User")
+                    b.HasOne("ToDoList.Api.Models.User", "User")
                         .WithMany("Tasks")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -92,7 +92,7 @@ namespace ToDoList.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ToDoList.Models.User", b =>
+            modelBuilder.Entity("ToDoList.Api.Models.User", b =>
                 {
                     b.Navigation("Tasks");
                 });

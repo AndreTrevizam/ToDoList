@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ToDoList.Data;
+using ToDoList.Api.Data;
 
 #nullable disable
 
-namespace ToDoList.Migrations
+namespace ToDoList.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20261109183621_InitialCreate")]
@@ -20,7 +20,7 @@ namespace ToDoList.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.14");
 
-            modelBuilder.Entity("ToDoList.Models.TodoTask", b =>
+            modelBuilder.Entity("ToDoList.Api.Models.TodoTask", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
