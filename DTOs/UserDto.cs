@@ -10,6 +10,8 @@ public class UserDto
 
   public string Email { get; set; } = string.Empty;
 
+  public string Role { get; set; } = string.Empty;
+
   public DateTime CreatedAt { get; set; }
 
   public static UserDto FromEntity(User user) => new()
@@ -17,6 +19,7 @@ public class UserDto
     Id = user.Id,
     Name = user.Name,
     Email = user.Email,
+    Role = user.Role.ToString(),
     CreatedAt = user.CreatedAt
   };
 }

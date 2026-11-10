@@ -14,9 +14,12 @@ public class TaskDto
 
   public DateTime CreatedAt { get; set; }
 
+  public Guid UserId { get; set; }
+
   public static TaskDto FromEntity(TodoTask task) => new()
   {
     Id = task.Id,
+    UserId = task.UserId,
     Title = task.Title,
     Description = task.Description,
     IsCompleted = task.IsCompleted,

@@ -67,6 +67,12 @@ namespace ToDoList.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT")
+                        .HasDefaultValue("User");
+
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("TEXT");
 

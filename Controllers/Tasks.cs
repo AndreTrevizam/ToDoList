@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.DTOs;
 using ToDoList.Extensions;
+using ToDoList.Models;
 
 namespace ToDoList.Controllers;
 
@@ -21,6 +22,15 @@ public class TasksController : ControllerBase
   public async Task<List<TaskDto>> Get()
   {
     var tasks = await _taskService.ListByUser(User.GetUserId());
+
+    return tasks.Select(TaskDto.FromEntity).ToList();
+  }
+
+  [HttpGet("all")]
+  [Authorize(Roles = nameof(UserRole.Admin))]
+  public async Task<List<TaskDto>> GetAll()
+  {
+    var tasks = await _taskService.ListAll();
 
     return tasks.Select(TaskDto.FromEntity).ToList();
   }

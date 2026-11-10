@@ -17,6 +17,12 @@ public class AppDbContext : DbContext
       .HasIndex(u => u.Email)
       .IsUnique();
 
+    modelBuilder.Entity<User>()
+      .Property(u => u.Role)
+      .HasConversion<string>()
+      .HasDefaultValue(UserRole.User)
+      .HasSentinel(UserRole.User);
+
     modelBuilder.Entity<TodoTask>()
       .HasOne(t => t.User)
       .WithMany(u => u.Tasks)

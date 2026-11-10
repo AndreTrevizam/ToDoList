@@ -38,4 +38,11 @@ public class TaskService : ITaskService
       .OrderByDescending(t => t.CreatedAt)
       .ToListAsync();
   }
+
+  public async Task<List<TodoTask>> ListAll()
+  {
+    return await _context.Tasks
+      .OrderByDescending(t => t.CreatedAt)
+      .ToListAsync();
+  }
 }

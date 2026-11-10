@@ -63,5 +63,12 @@ public class UserService : IUserService
     return user;
   }
 
+  public async Task<List<User>> ListAll()
+  {
+    return await _context.Users
+      .OrderBy(u => u.CreatedAt)
+      .ToListAsync();
+  }
+
   private static string NormalizeEmail(string email) => email.Trim().ToLowerInvariant();
 }
