@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/ToDoList.Api/ToDoList.Api.csproj" />
+    <Project Path="src/ToDoList.Desktop/ToDoList.Desktop.csproj" />
     <Project Path="src/ToDoList.Shared/ToDoList.Shared.csproj" />
   </Folder>
 </Solution>
