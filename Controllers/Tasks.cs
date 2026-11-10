@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.DTOs;
 using ToDoList.Models;
@@ -6,6 +7,7 @@ namespace ToDoList.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
+[Authorize]
 public class TasksController : ControllerBase
 {
   private readonly ITaskService _taskService;
@@ -26,6 +28,6 @@ public class TasksController : ControllerBase
   {
     var createdTask = await _taskService.Create(dto);
 
-    return Ok(dto);
+    return Ok(createdTask);
   }
 }

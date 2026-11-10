@@ -3,5 +3,6 @@ using ToDoList.Models;
 
 public interface IUserService
 {
-  Task<User> Create(CreateUserDto dto);
+  Task<User?> Register(CreateUserDto dto);
+  Task<User?> Authenticate(LoginDto dto);
 }

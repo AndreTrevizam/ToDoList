@@ -1,6 +1,37 @@
-@ToDoList_HostAddress = http://localhost:5002
+@host = http://localhost:5002/api/v1
 
-GET {{ToDoList_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+  "name": "Andre",
+  "email": "andre@exemplo.com",
+  "password": "Senha123!"
+}
 
 ###
+
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "andre@exemplo.com",
+  "password": "Senha123!"
+}
+
+###
+
+GET {{host}}/tasks
+Authorization: Bearer {{login.response.body.$.token}}
+
+###
+
+POST {{host}}/tasks
+Authorization: Bearer {{login.response.body.$.token}}
+Content-Type: application/json
+
+{
+  "title": "Minha primeira task",
+  "description": "Criada com token"
+}
