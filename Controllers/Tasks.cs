@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ToDoList.DTOs;
-using ToDoList.Models;
+using ToDoList.Extensions;
 
 namespace ToDoList.Controllers;
 
@@ -18,16 +18,18 @@ public class TasksController : ControllerBase
   }
 
   [HttpGet]
-  public async Task<List<TodoTask>> Get()
+  public async Task<List<TaskDto>> Get()
   {
-    return await _taskService.ListAll();
+    var tasks = await _taskService.ListByUser(User.GetUserId());
+
+    return tasks.Select(TaskDto.FromEntity).ToList();
   }
 
   [HttpPost]
   public async Task<IActionResult> Create(CreateTaskDto dto)
   {
-    var createdTask = await _taskService.Create(dto);
+    var createdTask = await _taskService.Create(dto, User.GetUserId());
 
-    return Ok(createdTask);
+    return Ok(TaskDto.FromEntity(createdTask));
   }
 }

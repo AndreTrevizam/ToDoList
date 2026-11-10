@@ -11,7 +11,8 @@ public class TaskService : ITaskService
   {
     _context = context;
   }
-  public async Task<TodoTask> Create(CreateTaskDto dto)
+
+  public async Task<TodoTask> Create(CreateTaskDto dto, Guid userId)
   {
     var task = new TodoTask
     {
@@ -19,7 +20,8 @@ public class TaskService : ITaskService
       Title = dto.Title,
       Description = dto.Description,
       IsCompleted = false,
-      CreatedAt = DateTime.UtcNow
+      CreatedAt = DateTime.UtcNow,
+      UserId = userId
     };
 
     _context.Tasks.Add(task);
@@ -29,8 +31,11 @@ public class TaskService : ITaskService
     return task;
   }
 
-  public async Task<List<TodoTask>> ListAll()
+  public async Task<List<TodoTask>> ListByUser(Guid userId)
   {
-    return await _context.Tasks.ToListAsync();
+    return await _context.Tasks
+      .Where(t => t.UserId == userId)
+      .OrderByDescending(t => t.CreatedAt)
+      .ToListAsync();
   }
 }

@@ -16,5 +16,11 @@ public class AppDbContext : DbContext
     modelBuilder.Entity<User>()
       .HasIndex(u => u.Email)
       .IsUnique();
+
+    modelBuilder.Entity<TodoTask>()
+      .HasOne(t => t.User)
+      .WithMany(u => u.Tasks)
+      .HasForeignKey(t => t.UserId)
+      .OnDelete(DeleteBehavior.Cascade);
   }
 }
